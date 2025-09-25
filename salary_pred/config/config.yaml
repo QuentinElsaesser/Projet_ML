@@ -1,0 +1,29 @@
+data:
+    raw_path: "data/raw/salary_data.csv"
+    #processed_path: "data/processed/cleaned_data.csv"
+    test_size: 0.2
+    random_state: 42
+
+model:
+    model_path: "data/models/salary_model2.pkl"
+    model_type: "random_forest"
+
+api:
+    host: "0.0.0.0"
+    # nom docker host
+    dockerhost: "ml_service"
+    port: 8000
+    debug: false
+
+front:
+    title: "Application ML"
+    version: "1.0.0"
+    url: "http://localhost:8501"
+
+server:
+    title: "Serveur Application ML"
+    version: "1.0.0"
+
+logging:
+    show_time: true
+    show_level: true
