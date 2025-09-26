@@ -3,7 +3,7 @@ import streamlit as st
 from frontend.utils.api import FastAPIClient
 from frontend.components.sidebar import render_sidebar
 from frontend.components.pages import home, train, predict, metrics
-from components.header import render_header
+from frontend.components.header import render_header
 # from components.charts import plot_metrics, plot_metrics_history
 
 from backend.utils.config import config
