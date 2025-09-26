@@ -1,12 +1,11 @@
 data:
     raw_path: "data/raw/salary_data.csv"
-    #processed_path: "data/processed/cleaned_data.csv"
     test_size: 0.2
     random_state: 42
 
 model:
-    model_path: "data/models/salary_model2.pkl"
-    model_type: "random_forest"
+    model_path: "data/models/salary_model.pkl"
+    model_type: "linear_regression"
 
 api:
     host: "0.0.0.0"
