@@ -1,10 +1,12 @@
-# En cours 
+# Projet ML
+
+Une application complète de Machine Learning. Exemple pour prédire les salaires basés sur l'expérience professionnelle (https://www.kaggle.com/datasets/rohankayan/years-of-experience-and-salary-dataset).
 
 # Lancement du back 
 
 make runb
 
-pas oublier de lancement docker desktop
+pas oublier de lancer docker desktop
 
 # Lancement du front
 
@@ -12,18 +14,17 @@ make runf
 
 # Avancement du projet Patron
 
-- Lecture du fichier de config
-- Accès via l'instance globale config et config.data.raw_path (accès par point et accès aux differents niveaux imbriqués)
-- Model Manager qui charge / save / predict selon ce qu'on met dans le fichier config
-- Peut chager quand on veut le model en cours d'utilisation
-- Class FastAPI pour le serveur
-- Route test qui compare mon modele de regression et le modele de sklearn
-- schemas pour la sortie de modele manager avec les métriques de bases
-- endpoint 
-- frontend
-    - Entrainement
-    - Prediction
-    - Métrique
+- Lecture du fichier de configuration
+- Accès via l'instance globale config et config.data.raw_path (accès par point et accès aux différents niveaux imbriqués)
+- Model Manager qui charge/sauvegarde/prédit selon la configuration
+- Classe FastAPI pour le serveur
+- Route test qui compare mon modèle de régression et le modèle de sklearn
+- Schémas pour la sortie du Model Manager avec les métriques de base
+- Endpoint
+- Frontend
+    - Entraînement
+    - Prédiction
+    - Métriques
 
 Exemple pour test endpoint dans /docs
 
@@ -36,13 +37,7 @@ Exemple pour test endpoint dans /docs
   ]
 }
 
-# Projet ML
-
-Une application complète de Machine Learning. Exemple pour prédire les salaires basés sur l'expérience professionnelle (https://www.kaggle.com/datasets/rohankayan/years-of-experience-and-salary-dataset).
-
 ## Architecture
-
-## Commande pour l'application
 
 ## ULRs
 
@@ -52,7 +47,7 @@ Documentation API : http://localhost:8000/docs
 
 API FastAPI : http://localhost:8000
 
-## Endpoints du Modèle
+## Endpoints du modèle
 
 |Méthode | Route |Description|
 | :--------------- |:---------------| :-----|
@@ -64,7 +59,3 @@ API FastAPI : http://localhost:8000
 |POST | /ml/trainfile   | Entraîner le modèle sur un fichier|
 |POST | /ml/predict     | Faire une prédiction|
 |POST | /ml/evaluate    | Evalue le modele sur des données|
-
-## TODO
-
-Des tests

@@ -1,14 +1,13 @@
-# Projets ML
+# Projets ML Python
 
 Front : Streamlit
 Back : FastAPI
 + Docker
 
-## DONE
+## Projets
 
-- Prediction de salaire (https://www.kaggle.com/datasets/rohankayan/years-of-experience-and-salary-dataset)
+- [Prediction de salaire](./salary_pred/) (https://www.kaggle.com/datasets/rohankayan/years-of-experience-and-salary-dataset)
+- [Prix des maisons](./house_price/) (https://www.kaggle.com/datasets/arunjangir245/boston-housing-dataset/data)
+- [Classification d'image](./image_classification/) (https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
-## TODO
 
-- house price (https://www.kaggle.com/datasets/arunjangir245/boston-housing-dataset/data)
-- image classification (https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)

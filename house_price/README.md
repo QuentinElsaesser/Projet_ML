@@ -1,3 +1,7 @@
+# Projet ML
+
+Une application complète de Machine Learning basé sur le dataset https://www.kaggle.com/datasets/arunjangir245/boston-housing-dataset/data.
+
 # Lancement du back 
 
 make runb
@@ -8,22 +12,21 @@ pas oublier de lancement docker desktop
 
 make runf
 
-# Avancement du projet Patron
+# Avancement du projet
 
-- Lecture du fichier de config
-- Accès via l'instance globale config et config.data.raw_path (accès par point et accès aux differents niveaux imbriqués)
-- Model Manager qui charge / save / predict selon ce qu'on met dans le fichier config
-- Peut chager quand on veut le model en cours d'utilisation
-- Class FastAPI pour le serveur
-- Route test qui compare mon modele de regression et le modele de sklearn
-- schemas pour la sortie de modele manager avec les métriques de bases
-- endpoint 
-- frontend
-    - Entrainement
-    - Prediction
-    - Métrique
-- Target doit toujours avoir comme nom 'y' dans le dataset
-- Modele pris en charge : "ridge", "lasso", "random_forest", "xgboost", "lightgbm", "mlp"
+- Lecture du fichier de configuration
+- Accès via l'instance globale config (accès par point et accès aux différents niveaux imbriqués)
+- Model Manager qui charge/sauvegarde/prédit selon la configuration
+- Peut changer le modèle en cours d'utilisation à tout moment
+- Classe FastAPI pour le serveur
+- Schémas pour la sortie du Model Manager avec les métriques de base
+- Endpoint
+- Frontend
+    - Entraînement
+    - Prédiction
+    - Métriques
+- La target doit toujours s'appeler 'y' dans le dataset
+- Modèles pris en charge : "ridge", "lasso", "random_forest", "xgboost", "lightgbm", "mlp"
 
 ## Exemple
 
@@ -42,15 +45,7 @@ make runf
   "model_type": "random_forest"
 }
 
-# Projet ML
-
-Une application complète de Machine Learning. 
-
-Exemple pour prédire les salaires basés sur l'expérience professionnelle (https://www.kaggle.com/datasets/rohankayan/years-of-experience-and-salary-dataset).
-
 ## Architecture
-
-## Commande pour l'application
 
 ## ULRs
 
@@ -60,7 +55,7 @@ Documentation API : http://localhost:8000/docs
 
 API FastAPI : http://localhost:8000
 
-## Endpoints du Modèle
+## Endpoints du modèle
 
 |Méthode | Route |Description|
 | :--------------- |:---------------| :-----|
@@ -72,3 +67,49 @@ API FastAPI : http://localhost:8000
 |POST | /ml/trainfile   | Entraîner le modèle sur un fichier|
 |POST | /ml/predict     | Faire une prédiction|
 |POST | /ml/evaluate    | Evalue le modele sur des données|
+
+## Dataset
+
+This data frame contains the following columns:
+
+crim
+per capita crime rate by town.
+
+zn
+proportion of residential land zoned for lots over 25,000 sq.ft.
+
+indus
+proportion of non-retail business acres per town.
+
+chas
+Charles River dummy variable (= 1 if tract bounds river; 0 otherwise).
+
+nox
+nitrogen oxides concentration (parts per 10 million).
+
+rm
+average number of rooms per dwelling.
+
+age
+proportion of owner-occupied units built prior to 1940.
+
+dis
+weighted mean of distances to five Boston employment centres.
+
+rad
+index of accessibility to radial highways.
+
+tax
+full-value property-tax rate per $10,000.
+
+ptratio
+pupil-teacher ratio by town.
+
+black
+1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town.
+
+lstat
+lower status of the population (percent).
+
+medv/y
+median value of owner-occupied homes in $1000s.
