@@ -30,6 +30,8 @@ make runf
 
 ## Exemple
 
+Valeurs en exemple, ne fonctionne pas avec un modèle entrainé sur le fichier .csv (il faut 13 features)
+
 ### Train / Evaluate
 
 {

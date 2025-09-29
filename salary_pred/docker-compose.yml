@@ -3,7 +3,7 @@ version: '3.8'
 services:
   ml_service:
     build: . # chemin vers le dockerfile
-    container_name: mon-app-ml # nom perso du conteneur
+    container_name: ml_service # nom perso du conteneur
     working_dir: /app # Répertoire de travail dans le conteneur
     volumes:
       - .:/app # Monter le dossier data pour l'accès aux CSV
@@ -18,7 +18,7 @@ services:
 
   frontend:
     build: . 
-    container_name: mon-front
+    container_name: frontend
     working_dir: /app
     volumes:
       - .:/app
