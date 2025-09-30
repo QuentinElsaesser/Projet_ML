@@ -2,4 +2,5 @@
 **/.DS_Store
 **/.pytest_cache/
 **/*.pkl
+**/*.jpeg
 config.sh
