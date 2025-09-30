@@ -3,4 +3,5 @@
 **/.pytest_cache/
 **/*.pkl
 **/*.jpeg
+**/*.pt
 config.sh

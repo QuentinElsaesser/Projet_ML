@@ -5,7 +5,6 @@ from typing import Dict, Any, List
 from backend.models.basic_model import BasicModel
 from backend.models.model_factory import create_regressor
 from backend.utils.config import config
-from backend.utils.logger import smartlog
 
 class ModelManager:
     def __init__(self, model_type: str = None, model_path: str = None, **kwargs):
@@ -23,11 +22,13 @@ class ModelManager:
         self.model_fullname = self.model_path + self.model_type
         self.kwargs = kwargs
         self.model: BasicModel = None
+        self.train_loader = None # Tuple[DataLoader, Optional[DataLoader]]:
+        self.val_loader = None # Tuple[DataLoader, Optional[DataLoader]]:
+        self.current_epoch = 0
         self.metrics_history: List[Dict[str, Any]] = []  
 
     def set_model_type(self, model_type: str):
         """Change dynamiquement le type de modèle utilisé."""
-        smartlog.warning(f"Changement de modele : {self.model_fullname} -> {model_type}.")
         if model_type not in self.available_models:
             raise ValueError(f"Model {model_type} non supporté. "
                              f"Choisir parmi {self.available_models}")
@@ -37,7 +38,6 @@ class ModelManager:
 
     def create_model(self, model_type: str = None, **kwargs) -> BasicModel:
         """Fabrique un modèle en fonction du type demandé."""
-        smartlog.warning(f"Creation d'un nouveau modele : {self.model_fullname} -> {model_type}.")
         model_type = model_type or self.model_type
         kwargs = kwargs or self.kwargs
         return create_regressor(model_type, **kwargs)
@@ -56,7 +56,6 @@ class ModelManager:
         """Entraîne le modèle avec les données fournies."""
         # Ici on reset le modele car pas d'interet a reentrainer le modele
         # mais plus tard, il faut prendre ce cas en compte
-        smartlog.warning(f"Entrainement d'un modele : {self.model_fullname} -> {model_type}.")
         if model_type:
             self.set_model_type(model_type)
         self.model = self.create_model(model_type, **kwargs)
@@ -71,7 +70,6 @@ class ModelManager:
 
     def evaluate_model(self, x: np.ndarray, y: np.ndarray, model_type: str = None) -> Dict[str, float]:
         """Évalue le modèle avec des données de test."""
-        smartlog.warning(f"Evaluation d'un modele : {self.model_fullname} -> {model_type}.")
         if model_type:
             self.set_model_type(model_type)
         if not self.model:
@@ -86,7 +84,6 @@ class ModelManager:
 
     def predict(self, x: np.ndarray, model_type: str = None) -> np.ndarray:
         """Fait des prédictions avec le modèle."""
-        smartlog.warning(f"Prédiction d'un modele : {self.model_fullname} -> {model_type}.")
         if model_type:
             self.set_model_type(model_type)
         if not self.model:
@@ -95,13 +92,11 @@ class ModelManager:
 
     def save_model(self):
         """Sauvegarde le modèle courant."""
-        smartlog.warning(f"Sauvegarde d'un modele : {self.model_fullname + ".pt"}.")
         if self.model:
             self.model.save(self.model_fullname + ".pt")
 
     def load_model(self):
         """Charge un modèle sauvegardé."""
-        smartlog.warning(f"Chargement d'un modele : {self.model_fullname + ".pt"}.")
         if os.path.exists(self.model_fullname + ".pt"):
             self.model = self.create_model(self.model_type)
             self.model.load(self.model_fullname + ".pt")

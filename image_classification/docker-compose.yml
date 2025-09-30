@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  ml_service:
+    shm_size: '1gb'
+    build: . # chemin vers le dockerfile
+    container_name: ml_service # nom perso du conteneur
+    working_dir: /app # Répertoire de travail dans le conteneur
+    volumes:
+      - .:/app # Monter le dossier data pour l'accès aux CSV
+    ports:
+      - "8000:8000"
+    command: python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+    environment:
+      - PYTHONPATH=/app  
+    # Pour l'exécution interactive (voir les print)
+    stdin_open: true
+    tty: true
+
+  frontend:
+    build: . 
+    container_name: frontend
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8501:8501"
+    command: python -m streamlit run frontend/app.py --server.port 8501 --server.address 0.0.0.0
+    environment:
+      - PYTHONPATH=/app  
+    depends_on:
+      - ml_service
+    stdin_open: true
+    tty: true
