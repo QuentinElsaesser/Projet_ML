@@ -93,12 +93,12 @@ class ModelManager:
     def save_model(self):
         """Sauvegarde le modèle courant."""
         if self.model:
-            self.model.save(self.model_fullname + ".pt")
+            self.model.save(self.model_fullname + '.pt')
 
     def load_model(self):
         """Charge un modèle sauvegardé."""
-        if os.path.exists(self.model_fullname + ".pt"):
+        if os.path.exists(self.model_fullname + '.pt'):
             self.model = self.create_model(self.model_type)
-            self.model.load(self.model_fullname + ".pt")
+            self.model.load(self.model_fullname + '.pt')
         else:
-            raise FileNotFoundError(f"Modèle non trouvé: {self.model_fullname + ".pt"}")
+            raise FileNotFoundError(f"Modèle non trouvé: {self.model_fullname + '.pt'}")

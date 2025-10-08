@@ -5,3 +5,4 @@
 **/*.jpeg
 **/*.pt
 config.sh
+wr_config.py
